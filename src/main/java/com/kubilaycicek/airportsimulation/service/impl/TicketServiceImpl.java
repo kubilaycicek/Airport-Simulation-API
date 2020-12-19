@@ -1,5 +1,6 @@
 package com.kubilaycicek.airportsimulation.service.impl;
 
+import com.kubilaycicek.airportsimulation.constants.StringConstants;
 import com.kubilaycicek.airportsimulation.dto.TicketDto;
 import com.kubilaycicek.airportsimulation.exception.AirlineCompanyFlightNotFoundException;
 import com.kubilaycicek.airportsimulation.exception.TicketNotFoundException;
@@ -29,14 +30,14 @@ public class TicketServiceImpl implements TicketService {
     public TicketDto addTicket(TicketDto ticketDto) {
         Ticket ticket = ticketMapper.toTicket(ticketDto);
         ticket.setAirlineCompanyFlight(airlineCompanyFlightRepository.findById(ticketDto.getAirlineCompanyFlightDto().getId())
-                .orElseThrow(() -> new AirlineCompanyFlightNotFoundException("Airline Company Flight " + ticketDto.getAirlineCompanyFlightDto().getAirlineCompanyDto().getId() + " does not exist !")));
+                .orElseThrow(() -> new AirlineCompanyFlightNotFoundException(StringConstants.AIRLINE_COMPANY_FLIGHT + ticketDto.getAirlineCompanyFlightDto().getAirlineCompanyDto().getId() + " does not exist !")));
         return ticketMapper.toTicketDto(ticketRepository.save(ticket));
     }
 
     @Override
     public TicketDto updateTicket(TicketDto ticketDto) {
         Ticket ticketDb = ticketRepository.findById(ticketDto.getId())
-                .orElseThrow(() -> new TicketNotFoundException("Ticket " + ticketDto.getId() + " does not exist !"));
+                .orElseThrow(() -> new TicketNotFoundException(StringConstants.TICKET + ticketDto.getId() + StringConstants.DOES_NOT_EXIST));
         ticketDb.setStatus(ticketDto.isStatus());
         ticketDb.setCreditCardNumber(ticketDto.getCreditCardNumber());
         ticketDb.setName(ticketDto.getName());
@@ -44,7 +45,7 @@ public class TicketServiceImpl implements TicketService {
         ticketDb.setTicketNumber(ticketDto.getTicketNumber());
         ticketDb.setTotalPrice(ticketDto.getTotalPrice());
         ticketDb.setAirlineCompanyFlight(airlineCompanyFlightRepository.findById(ticketDto.getAirlineCompanyFlightDto().getId())
-                .orElseThrow(() -> new AirlineCompanyFlightNotFoundException("Airline Company Flight " + ticketDto.getAirlineCompanyFlightDto().getAirlineCompanyDto().getId() + " does not exist !")));
+                .orElseThrow(() -> new AirlineCompanyFlightNotFoundException(StringConstants.AIRLINE_COMPANY_FLIGHT + ticketDto.getAirlineCompanyFlightDto().getAirlineCompanyDto().getId() + StringConstants.DOES_NOT_EXIST)));
 
         return ticketMapper.toTicketDto(ticketRepository.save(ticketDb));
     }
@@ -52,13 +53,13 @@ public class TicketServiceImpl implements TicketService {
     @Override
     public TicketDto findById(long id) {
         return ticketMapper.toTicketDto(ticketRepository.findById(id)
-                .orElseThrow(() -> new TicketNotFoundException("Ticket " + id + " does not exist !")));
+                .orElseThrow(() -> new TicketNotFoundException(StringConstants.TICKET + id + StringConstants.DOES_NOT_EXIST)));
     }
 
     @Override
     public TicketDto findByTicketNumber(long ticketNumber) {
         return ticketMapper.toTicketDto(ticketRepository.findByTicketNumber(ticketNumber)
-                .orElseThrow(() -> new TicketNotFoundException("Ticket " + ticketNumber + " does not exist !")));
+                .orElseThrow(() -> new TicketNotFoundException(StringConstants.TICKET + ticketNumber + StringConstants.DOES_NOT_EXIST)));
     }
 
     @Override

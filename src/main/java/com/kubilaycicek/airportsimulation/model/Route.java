@@ -2,10 +2,8 @@ package com.kubilaycicek.airportsimulation.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-import org.hibernate.annotations.GeneratorType;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.List;
 
 @Data

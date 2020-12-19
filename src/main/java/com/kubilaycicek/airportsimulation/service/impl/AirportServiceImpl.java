@@ -1,5 +1,6 @@
 package com.kubilaycicek.airportsimulation.service.impl;
 
+import com.kubilaycicek.airportsimulation.constants.StringConstants;
 import com.kubilaycicek.airportsimulation.dto.AirportDto;
 import com.kubilaycicek.airportsimulation.exception.AirportNotFoundException;
 import com.kubilaycicek.airportsimulation.mapper.AirportMapper;
@@ -28,7 +29,7 @@ public class AirportServiceImpl implements AirportService {
     @Override
     public AirportDto updateAirport(AirportDto airportDto) {
         Airport airportDb = airportRepository.findById(airportDto.getId())
-                .orElseThrow(() -> new AirportNotFoundException("Airport " + airportDto.getId() + " does not exist !"));
+                .orElseThrow(() -> new AirportNotFoundException(StringConstants.AIRPORT + airportDto.getId() + StringConstants.DOES_NOT_EXIST));
         airportDb.setName(airportDto.getName());
         airportDb.setDescription(airportDto.getDescription());
         return airportMapper.toAirportDto(airportRepository.save(airportDb));
@@ -37,13 +38,13 @@ public class AirportServiceImpl implements AirportService {
     @Override
     public AirportDto findById(long id) {
         return airportMapper.toAirportDto(airportRepository.findById(id)
-                .orElseThrow(() -> new AirportNotFoundException("Airport " + id + " does not exist !")));
+                .orElseThrow(() -> new AirportNotFoundException(StringConstants.AIRPORT  + id + StringConstants.DOES_NOT_EXIST)));
     }
 
     @Override
     public AirportDto findByName(String name) {
         return airportMapper.toAirportDto(airportRepository.findByName(name)
-                .orElseThrow(() -> new AirportNotFoundException("Airport " + name + " does not exist !")));
+                .orElseThrow(() -> new AirportNotFoundException(StringConstants.AIRPORT  + name + StringConstants.DOES_NOT_EXIST)));
     }
 
     @Override

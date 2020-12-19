@@ -1,6 +1,5 @@
 package com.kubilaycicek.airportsimulation.service;
 
-import com.kubilaycicek.airportsimulation.dto.RouteDto;
 import com.kubilaycicek.airportsimulation.dto.TicketDto;
 
 import java.util.List;

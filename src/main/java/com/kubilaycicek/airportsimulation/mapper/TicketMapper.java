@@ -20,5 +20,5 @@ public interface TicketMapper {
     List<Ticket> toTicketList(List<TicketDto> ticketDtoList);
 
     @IterableMapping(qualifiedByName = "toTicketDtoList")
-    List<TicketDto> toTicketDtoList(List<Ticket> TicketList);
+    List<TicketDto> toTicketDtoList(List<Ticket> ticketList);
 }

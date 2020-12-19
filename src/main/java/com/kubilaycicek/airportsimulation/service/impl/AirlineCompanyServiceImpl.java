@@ -1,5 +1,6 @@
 package com.kubilaycicek.airportsimulation.service.impl;
 
+import com.kubilaycicek.airportsimulation.constants.StringConstants;
 import com.kubilaycicek.airportsimulation.dto.AirlineCompanyDto;
 import com.kubilaycicek.airportsimulation.exception.AirlineCompanyNotFoundException;
 import com.kubilaycicek.airportsimulation.exception.AirportNotFoundException;
@@ -30,7 +31,7 @@ public class AirlineCompanyServiceImpl implements AirlineCompanyService {
     public AirlineCompanyDto addAirline(AirlineCompanyDto airlineCompanyDto) {
 
         Airport airport = airportRepository.findById(airlineCompanyDto.getAirportDto().getId())
-                .orElseThrow(() -> new AirportNotFoundException("Airport " + airlineCompanyDto.getAirportDto().getId() + " does not exist !"));
+                .orElseThrow(() -> new AirportNotFoundException(StringConstants.AIRPORT + airlineCompanyDto.getAirportDto().getId() + StringConstants.DOES_NOT_EXIST));
 
         AirlineCompany airlineCompany = airlineCompanyMapper.toAirlineCompany(airlineCompanyDto);
         airlineCompany.setAirport(airport);
@@ -42,10 +43,10 @@ public class AirlineCompanyServiceImpl implements AirlineCompanyService {
     public AirlineCompanyDto updateAirline(AirlineCompanyDto airlineCompanyDto) {
 
         Airport airport = airportRepository.findById(airlineCompanyDto.getAirportDto().getId())
-                .orElseThrow(() -> new AirportNotFoundException("Airport " + airlineCompanyDto.getAirportDto().getId() + " does not exist !"));
+                .orElseThrow(() -> new AirportNotFoundException(StringConstants.AIRPORT  + airlineCompanyDto.getAirportDto().getId() + StringConstants.DOES_NOT_EXIST));
 
         AirlineCompany airlineCompanyDb = airlineCompanyRepository.findById(airlineCompanyDto.getId())
-                .orElseThrow(() -> new AirlineCompanyNotFoundException("Airline Company " + airlineCompanyDto.getId() + " does not exist!"));
+                .orElseThrow(() -> new AirlineCompanyNotFoundException(StringConstants.AIRLINE_COMPANY + airlineCompanyDto.getId() + StringConstants.DOES_NOT_EXIST));
 
         airlineCompanyDb.setName(airlineCompanyDto.getName());
         airlineCompanyDb.setDescription(airlineCompanyDto.getDescription());
@@ -57,13 +58,13 @@ public class AirlineCompanyServiceImpl implements AirlineCompanyService {
     @Override
     public AirlineCompanyDto findById(long id) {
         return airlineCompanyMapper.toAirlineCompanyDto(airlineCompanyRepository.findById(id)
-                .orElseThrow(() -> new AirlineCompanyNotFoundException("Airline Company " + id + " does not exist !")));
+                .orElseThrow(() -> new AirlineCompanyNotFoundException(StringConstants.AIRLINE_COMPANY + id + StringConstants.DOES_NOT_EXIST)));
     }
 
     @Override
     public AirlineCompanyDto findByName(String name) {
         return airlineCompanyMapper.toAirlineCompanyDto(airlineCompanyRepository.findByName(name)
-                .orElseThrow(() -> new AirlineCompanyNotFoundException("Airline Company " + name + " does not exist !")));
+                .orElseThrow(() -> new AirlineCompanyNotFoundException(StringConstants.AIRLINE_COMPANY + name + StringConstants.DOES_NOT_EXIST)));
 
     }
 

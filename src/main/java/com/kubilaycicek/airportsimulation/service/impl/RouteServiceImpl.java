@@ -1,5 +1,6 @@
 package com.kubilaycicek.airportsimulation.service.impl;
 
+import com.kubilaycicek.airportsimulation.constants.StringConstants;
 import com.kubilaycicek.airportsimulation.dto.RouteDto;
 import com.kubilaycicek.airportsimulation.exception.RouteNotFoundException;
 import com.kubilaycicek.airportsimulation.mapper.RouteMapper;
@@ -28,7 +29,7 @@ public class RouteServiceImpl implements RouteService {
     @Override
     public RouteDto updateRoute(RouteDto routeDto) {
         Route routeDb = routeRepository.findById(routeDto.getId())
-                .orElseThrow(() -> new RouteNotFoundException("Route " + routeDto.getId() + " does not exist"));
+                .orElseThrow(() -> new RouteNotFoundException(StringConstants.ROUTE + routeDto.getId() + StringConstants.DOES_NOT_EXIST));
         routeDb.setName(routeDto.getName());
         routeDb.setDistance(routeDto.getDistance());
         return routeMapper.toRouteDto(routeRepository.save(routeDb));
@@ -37,13 +38,13 @@ public class RouteServiceImpl implements RouteService {
     @Override
     public RouteDto findById(long id) {
         return routeMapper.toRouteDto(routeRepository.findById(id)
-                .orElseThrow(() -> new RouteNotFoundException("Route " + id + " does not exist !")));
+                .orElseThrow(() -> new RouteNotFoundException(StringConstants.ROUTE + id + StringConstants.DOES_NOT_EXIST)));
     }
 
     @Override
     public RouteDto findByName(String name) {
         return routeMapper.toRouteDto(routeRepository.findByName(name)
-                .orElseThrow(() -> new RouteNotFoundException("Ticket " + name + " does not exist !")));
+                .orElseThrow(() -> new RouteNotFoundException(StringConstants.ROUTE + name  + StringConstants.DOES_NOT_EXIST)));
     }
 
     @Override
