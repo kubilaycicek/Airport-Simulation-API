@@ -2,8 +2,6 @@ package com.kubilaycicek.airportsimulation.service.impl;
 
 import com.kubilaycicek.airportsimulation.dto.TicketDto;
 import com.kubilaycicek.airportsimulation.exception.AirlineCompanyFlightNotFoundException;
-import com.kubilaycicek.airportsimulation.exception.AirlineCompanyNotFoundException;
-import com.kubilaycicek.airportsimulation.exception.RouteNotFoundException;
 import com.kubilaycicek.airportsimulation.exception.TicketNotFoundException;
 import com.kubilaycicek.airportsimulation.mapper.TicketMapper;
 import com.kubilaycicek.airportsimulation.model.Ticket;
@@ -18,7 +16,6 @@ import java.util.List;
 @Service
 public class TicketServiceImpl implements TicketService {
 
-
     @Autowired
     TicketMapper ticketMapper;
 
@@ -27,7 +24,6 @@ public class TicketServiceImpl implements TicketService {
 
     @Autowired
     AirlineCompanyFlightRepository airlineCompanyFlightRepository;
-
 
     @Override
     public TicketDto addTicket(TicketDto ticketDto) {

@@ -1,7 +1,6 @@
 package com.kubilaycicek.airportsimulation.service.impl;
 
 import com.kubilaycicek.airportsimulation.dto.RouteDto;
-import com.kubilaycicek.airportsimulation.exception.AirportNotFoundException;
 import com.kubilaycicek.airportsimulation.exception.RouteNotFoundException;
 import com.kubilaycicek.airportsimulation.mapper.RouteMapper;
 import com.kubilaycicek.airportsimulation.model.Route;
