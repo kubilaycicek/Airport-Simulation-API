@@ -16,7 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "AirlineCompanyFlight")
-public class AirlineCompanyFlight implements Serializable {
+public class AirlineCompanyFlight extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "airline_company_flight_generator")

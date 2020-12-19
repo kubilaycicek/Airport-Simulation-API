@@ -73,7 +73,7 @@ public class AirlineCompanyServiceImpl implements AirlineCompanyService {
     }
 
     @Override
-    public List<AirlineCompanyDto> findAllAirlineList() {
+    public List<AirlineCompanyDto> findAll() {
         return airlineCompanyMapper.toAirlineCompanyDtoList(airlineCompanyRepository.findAll());
     }
 }

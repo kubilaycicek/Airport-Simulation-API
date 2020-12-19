@@ -11,5 +11,5 @@ public interface AirportService {
     AirportDto findById(long id);
     AirportDto findByName(String name);
     void removeById(long id);
-    List<AirportDto> findAllAirportList();
+    List<AirportDto> findAll();
 }

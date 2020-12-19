@@ -11,7 +11,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "Airport")
-public class Airport implements Serializable {
+public class Airport extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "airport_generator")
     @SequenceGenerator(name = "airport_generator", sequenceName = "airport_sequence")

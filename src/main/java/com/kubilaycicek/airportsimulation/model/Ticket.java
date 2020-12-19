@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "Ticket")
-public class Ticket {
+public class Ticket extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ticket_generator")
     @SequenceGenerator(name = "ticket_generator", sequenceName = "ticket_sequence")

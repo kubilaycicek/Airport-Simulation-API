@@ -11,7 +11,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "Route")
-public class Route implements Serializable {
+public class Route extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "route_generator")
     @SequenceGenerator(name = "route_generator", sequenceName = "route_sequence")
@@ -25,6 +25,6 @@ public class Route implements Serializable {
     private String distance;
 
     @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,targetEntity = AirlineCompanyFlight.class,mappedBy = "route")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = AirlineCompanyFlight.class, mappedBy = "route")
     private List<AirlineCompanyFlight> airlineCompanyFlight;
 }

@@ -11,5 +11,5 @@ public interface AirlineCompanyService {
     AirlineCompanyDto findById(long id);
     AirlineCompanyDto findByName(String name);
     void removeById(long id);
-    List<AirlineCompanyDto> findAllAirlineList();
+    List<AirlineCompanyDto> findAll();
 }

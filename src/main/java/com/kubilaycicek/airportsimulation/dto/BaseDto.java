@@ -8,4 +8,5 @@ import java.io.Serializable;
 @Data
 @MappedSuperclass
 public class BaseDto implements Serializable {
+    private boolean status;
 }

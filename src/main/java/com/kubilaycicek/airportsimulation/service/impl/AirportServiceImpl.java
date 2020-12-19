@@ -52,7 +52,7 @@ public class AirportServiceImpl implements AirportService {
     }
 
     @Override
-    public List<AirportDto> findAllAirportList() {
+    public List<AirportDto> findAll() {
         return airportMapper.toAirportDtoList(airportRepository.findAll());
     }
 }
