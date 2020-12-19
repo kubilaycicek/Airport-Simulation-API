@@ -6,7 +6,6 @@ import com.kubilaycicek.airportsimulation.mapper.AirportMapper;
 import com.kubilaycicek.airportsimulation.model.Airport;
 import com.kubilaycicek.airportsimulation.repository.AirportRepository;
 import com.kubilaycicek.airportsimulation.service.AirportService;
-import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,12 +36,14 @@ public class AirportServiceImpl implements AirportService {
 
     @Override
     public AirportDto findById(long id) {
-        return airportMapper.toAirportDto(airportRepository.findById(id).orElseThrow(() -> new AirportNotFoundException("Airport " + id + " does not exist !")));
+        return airportMapper.toAirportDto(airportRepository.findById(id)
+                .orElseThrow(() -> new AirportNotFoundException("Airport " + id + " does not exist !")));
     }
 
     @Override
     public AirportDto findByName(String name) {
-        return airportMapper.toAirportDto(airportRepository.findByName(name).orElseThrow(() -> new AirportNotFoundException("Airport " + name + " does not exist !")));
+        return airportMapper.toAirportDto(airportRepository.findByName(name)
+                .orElseThrow(() -> new AirportNotFoundException("Airport " + name + " does not exist !")));
     }
 
     @Override
