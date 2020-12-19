@@ -24,8 +24,8 @@ public class Ticket {
     @Column(name = "surname")
     private String surname;
 
-    @Column(name = "price")
-    private Double price;
+    @Column(name = "totalPrice")
+    private Double totalPrice;
 
     @Column(name = "creditCardNumber")
     private String CreditCardNumber;

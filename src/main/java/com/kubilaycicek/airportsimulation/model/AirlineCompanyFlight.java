@@ -24,6 +24,9 @@ public class AirlineCompanyFlight implements Serializable {
     @Column(name = "id", updatable = false, nullable = false)
     private long id;
 
+    @Column(name = "name")
+    private String name;
+
     @Column(name = "code")
     private String code;
 
