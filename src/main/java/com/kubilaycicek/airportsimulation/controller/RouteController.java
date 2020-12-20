@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/route")
+@RequestMapping("api/v1/route")
 public class RouteController {
 
     @Autowired

@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("ticket")
+@RequestMapping("api/v1/ticket")
 public class TicketController {
     @Autowired
     TicketService ticketService;
@@ -28,9 +28,9 @@ public class TicketController {
         return new TicketResponse(ticketService.findById(id));
     }
 
-    @GetMapping("/code/{code}")
-    public TicketResponse getByName(@PathVariable(name = "{code}") Long code) {
-        return new TicketResponse(ticketService.findByTicketNumber(code));
+    @GetMapping("/ticketNumber/{ticketNumber}")
+    public TicketResponse getByTicketNumber(@PathVariable(name = "{ticketNumber}") Long ticketNumber) {
+        return new TicketResponse(ticketService.findByTicketNumber(ticketNumber));
     }
 
     @GetMapping("/list")

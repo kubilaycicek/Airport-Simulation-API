@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/airport")
+@RequestMapping("api/v1/airport")
 public class AirportController {
 
     @Autowired

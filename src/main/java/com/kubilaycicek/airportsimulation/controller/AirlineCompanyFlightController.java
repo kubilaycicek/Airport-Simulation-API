@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("airline-company-flight")
+@RequestMapping("api/v1/airline-company-flight")
 public class AirlineCompanyFlightController {
 
     @Autowired
