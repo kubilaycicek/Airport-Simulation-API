@@ -1,7 +1,6 @@
 package com.kubilaycicek.airportsimulation.mapper;
 
 import com.kubilaycicek.airportsimulation.dto.RouteDto;
-import com.kubilaycicek.airportsimulation.model.Airport;
 import com.kubilaycicek.airportsimulation.model.Route;
 import org.mapstruct.IterableMapping;
 import org.mapstruct.Mapper;
