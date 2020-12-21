@@ -1,6 +1,6 @@
 package com.kubilaycicek.airportsimulation.controller;
 
-import gcom.kubilaycicek.airportsimulation.request.RouteRequest;
+import com.kubilaycicek.airportsimulation.request.RouteRequest;
 import com.kubilaycicek.airportsimulation.response.RouteListResponse;
 import com.kubilaycicek.airportsimulation.response.RouteResponse;
 import com.kubilaycicek.airportsimulation.service.RouteService;
