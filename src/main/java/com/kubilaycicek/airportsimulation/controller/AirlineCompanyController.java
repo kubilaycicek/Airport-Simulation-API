@@ -15,12 +15,14 @@ public class AirlineCompanyController {
 
     @PostMapping
     public AirlineCompanyResponse addAirlineCompany(@RequestBody AirlineCompanyRequest airlineCompanyRequest) {
-        return new AirlineCompanyResponse(airlineCompanyService.addAirline(airlineCompanyRequest.getAirlineCompanyDto()));
+        return new AirlineCompanyResponse(airlineCompanyService
+                .addAirlineCompany(airlineCompanyRequest.getAirlineCompanyDto()));
     }
 
     @PutMapping
     public AirlineCompanyResponse updateAirlineCompany(@RequestBody AirlineCompanyRequest airlineCompanyRequest) {
-        return new AirlineCompanyResponse(airlineCompanyService.updateAirline(airlineCompanyRequest.getAirlineCompanyDto()));
+        return new AirlineCompanyResponse(airlineCompanyService
+                .updateAirlineCompany(airlineCompanyRequest.getAirlineCompanyDto()));
     }
 
     @GetMapping("/{id}")

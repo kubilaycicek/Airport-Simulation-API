@@ -21,11 +21,12 @@ public class AirlineCompanyFlightServiceImpl implements AirlineCompanyFlightServ
     @Autowired
     AirlineCompanyFlightMapper airlineCompanyFlightMapper;
 
-    @Autowired
-    AirlineCompanyRepository airlineCompanyRepository;
 
     @Autowired
     RouteRepository routeRepository;
+
+    @Autowired
+    AirlineCompanyRepository airlineCompanyRepository;
 
     @Autowired
     AirlineCompanyFlightRepository airlineCompanyFlightRepository;
@@ -36,23 +37,31 @@ public class AirlineCompanyFlightServiceImpl implements AirlineCompanyFlightServ
         AirlineCompanyFlight airlineCompanyFlight = airlineCompanyFlightMapper.toAirlineCompanyFlight(airlineCompanyFlightDto);
 
         airlineCompanyFlight.setAirlineCompany(airlineCompanyRepository.findById(airlineCompanyFlightDto.getAirlineCompanyDto().getId())
-                .orElseThrow(() -> new AirlineCompanyFlightNotFoundException(StringConstants.AIRLINE_COMPANY  + airlineCompanyFlightDto.getAirlineCompanyDto().getId() + StringConstants.DOES_NOT_EXIST)));
+                .orElseThrow(() -> new AirlineCompanyFlightNotFoundException(StringConstants.AIRLINE_COMPANY + airlineCompanyFlightDto.getAirlineCompanyDto().getId() + StringConstants.DOES_NOT_EXIST)));
 
         airlineCompanyFlight.setRoute(routeRepository.findById(airlineCompanyFlightDto.getRouteDto().getId())
-                .orElseThrow(() -> new RouteNotFoundException(StringConstants.ROUTE  + airlineCompanyFlightDto.getRouteDto().getId() + StringConstants.DOES_NOT_EXIST)));
+                .orElseThrow(() -> new RouteNotFoundException(StringConstants.ROUTE + airlineCompanyFlightDto.getRouteDto().getId() + StringConstants.DOES_NOT_EXIST)));
 
         return airlineCompanyFlightMapper.toAirlineCompanyFlightDto(airlineCompanyFlightRepository.save(airlineCompanyFlight));
     }
 
     @Override
     public AirlineCompanyFlightDto updateAirlineCompanyFlight(AirlineCompanyFlightDto airlineCompanyFlightDto) {
-        return null;
+        AirlineCompanyFlight airlineCompanyFlight = airlineCompanyFlightRepository.findById(airlineCompanyFlightDto.getId())
+                .orElseThrow(() -> new AirlineCompanyFlightNotFoundException(StringConstants.AIRLINE_COMPANY_FLIGHT + airlineCompanyFlightDto.getId() + StringConstants.DOES_NOT_EXIST));
+
+        airlineCompanyFlight.setAirlineCompany(airlineCompanyRepository.findById(airlineCompanyFlightDto.getAirlineCompanyDto().getId())
+                .orElseThrow(() -> new AirlineCompanyFlightNotFoundException(StringConstants.AIRLINE_COMPANY + airlineCompanyFlightDto.getAirlineCompanyDto().getId() + StringConstants.DOES_NOT_EXIST)));
+
+        airlineCompanyFlight.setRoute(routeRepository.findById(airlineCompanyFlightDto.getRouteDto().getId()).orElseThrow(() -> new RouteNotFoundException(StringConstants.ROUTE + airlineCompanyFlightDto.getRouteDto().getId() + StringConstants.DOES_NOT_EXIST)));
+
+        return airlineCompanyFlightMapper.toAirlineCompanyFlightDto(airlineCompanyFlightRepository.save(airlineCompanyFlight));
     }
 
     @Override
     public AirlineCompanyFlightDto findById(long id) {
         return airlineCompanyFlightMapper.toAirlineCompanyFlightDto(airlineCompanyFlightRepository.findById(id)
-                .orElseThrow(() -> new AirlineCompanyFlightNotFoundException(StringConstants.AIRLINE_COMPANY_FLIGHT  + id + StringConstants.DOES_NOT_EXIST)));
+                .orElseThrow(() -> new AirlineCompanyFlightNotFoundException(StringConstants.AIRLINE_COMPANY_FLIGHT + id + StringConstants.DOES_NOT_EXIST)));
     }
 
     @Override

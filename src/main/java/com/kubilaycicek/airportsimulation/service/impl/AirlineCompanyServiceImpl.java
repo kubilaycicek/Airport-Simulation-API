@@ -28,7 +28,7 @@ public class AirlineCompanyServiceImpl implements AirlineCompanyService {
     AirlineCompanyMapper airlineCompanyMapper;
 
     @Override
-    public AirlineCompanyDto addAirline(AirlineCompanyDto airlineCompanyDto) {
+    public AirlineCompanyDto addAirlineCompany(AirlineCompanyDto airlineCompanyDto) {
 
         Airport airport = airportRepository.findById(airlineCompanyDto.getAirportDto().getId())
                 .orElseThrow(() -> new AirportNotFoundException(StringConstants.AIRPORT + airlineCompanyDto.getAirportDto().getId() + StringConstants.DOES_NOT_EXIST));
@@ -40,7 +40,7 @@ public class AirlineCompanyServiceImpl implements AirlineCompanyService {
     }
 
     @Override
-    public AirlineCompanyDto updateAirline(AirlineCompanyDto airlineCompanyDto) {
+    public AirlineCompanyDto updateAirlineCompany(AirlineCompanyDto airlineCompanyDto) {
 
         Airport airport = airportRepository.findById(airlineCompanyDto.getAirportDto().getId())
                 .orElseThrow(() -> new AirportNotFoundException(StringConstants.AIRPORT  + airlineCompanyDto.getAirportDto().getId() + StringConstants.DOES_NOT_EXIST));
@@ -65,7 +65,6 @@ public class AirlineCompanyServiceImpl implements AirlineCompanyService {
     public AirlineCompanyDto findByName(String name) {
         return airlineCompanyMapper.toAirlineCompanyDto(airlineCompanyRepository.findByName(name)
                 .orElseThrow(() -> new AirlineCompanyNotFoundException(StringConstants.AIRLINE_COMPANY + name + StringConstants.DOES_NOT_EXIST)));
-
     }
 
     @Override
