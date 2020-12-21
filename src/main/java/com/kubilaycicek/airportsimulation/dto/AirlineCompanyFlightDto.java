@@ -17,6 +17,8 @@ public class AirlineCompanyFlightDto extends BaseDto {
 
     private String code;
 
+    private String name;
+
     private Date flightDate;
 
     private long quota;

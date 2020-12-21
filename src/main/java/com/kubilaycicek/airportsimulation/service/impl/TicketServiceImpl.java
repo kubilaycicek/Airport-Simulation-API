@@ -43,9 +43,12 @@ public class TicketServiceImpl implements TicketService {
         ticketDb.setName(ticketDto.getName());
         ticketDb.setSurname(ticketDto.getSurname());
         ticketDb.setTicketNumber(ticketDto.getTicketNumber());
-        ticketDb.setTotalPrice(ticketDto.getTotalPrice());
+
         ticketDb.setAirlineCompanyFlight(airlineCompanyFlightRepository.findById(ticketDto.getAirlineCompanyFlightDto().getId())
                 .orElseThrow(() -> new AirlineCompanyFlightNotFoundException(StringConstants.AIRLINE_COMPANY_FLIGHT + ticketDto.getAirlineCompanyFlightDto().getAirlineCompanyDto().getId() + StringConstants.DOES_NOT_EXIST)));
+
+        //Set Flight Price
+        ticketDb.setTotalPrice(ticketDb.getAirlineCompanyFlight().getPrice());
 
         return ticketMapper.toTicketDto(ticketRepository.save(ticketDb));
     }
