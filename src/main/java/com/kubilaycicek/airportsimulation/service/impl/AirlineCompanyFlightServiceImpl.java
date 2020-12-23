@@ -23,12 +23,12 @@ public class AirlineCompanyFlightServiceImpl implements AirlineCompanyFlightServ
 
     @Autowired
     AirlineCompanyRepository airlineCompanyRepository;
+    
+    @Autowired
+    AirlineCompanyFlightMapper airlineCompanyFlightMapper;
 
     @Autowired
     AirlineCompanyFlightRepository airlineCompanyFlightRepository;
-
-    @Autowired
-    AirlineCompanyFlightMapper airlineCompanyFlightMapper;
 
     @Override
     public AirlineCompanyFlightDto addAirlineCompanyFlight(AirlineCompanyFlightDto airlineCompanyFlightDto) {
